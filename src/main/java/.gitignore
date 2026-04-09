@@ -1,0 +1,17 @@
+# Compiled Java files
+target/
+*.class
+
+# Secret API Keys (Don't leak your OpenAI key!)
+.env
+config.properties
+
+# VS Code settings
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS specific files
+.DS_Store
+Thumbs.db
