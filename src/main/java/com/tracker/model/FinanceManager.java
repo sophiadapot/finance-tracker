@@ -3,7 +3,9 @@ import java.util.*;
 import com.google.gson.Gson; 
 import com.google.gson.GsonBuilder; 
 import java.io.*; 
-import java.lang.reflect.Type;        
+import java.lang.reflect.Type;
+import java.time.LocalDate;
+
 import com.google.gson.reflect.TypeToken;
 
 public class FinanceManager {
@@ -44,16 +46,16 @@ public class FinanceManager {
             System.out.println(e.toString());
         }
     }
-    public Map<String, Double> getCategoryTotals(){
-        Map<String, Double> totals = new HashMap<>(); 
-
+    public Map<String, Double> getCategoryTotalsByMonth(){
+        Map<String, Double> monthlyTotals = new HashMap<>(); 
         for (Transaction t : transactions){
-            String category = t.getCatagory();
-            double amount = t.getAmount(); 
-
-            totals.put(category, totals.getOrDefault(category, 0.0) + amount);
+            if (t.getDate().getMonth() == LocalDate.now().getMonth() && t.getDate().getYear() == LocalDate.now().getYear()){
+                String category = t.getCatagory();
+                double amount = t.getAmount(); 
+                monthlyTotals.put(category, monthlyTotals.getOrDefault(category, 0.0) + amount);
+            } 
         }
-        return totals; 
+        return monthlyTotals; 
     }
     
 }
