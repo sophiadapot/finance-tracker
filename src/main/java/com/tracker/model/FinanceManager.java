@@ -44,4 +44,16 @@ public class FinanceManager {
             System.out.println(e.toString());
         }
     }
+    public Map<String, Double> getCategoryTotals(){
+        Map<String, Double> totals = new HashMap<>(); 
+
+        for (Transaction t : transactions){
+            String category = t.getCatagory();
+            double amount = t.getAmount(); 
+
+            totals.put(category, totals.getOrDefault(category, 0.0) + amount);
+        }
+        return totals; 
+    }
+    
 }
