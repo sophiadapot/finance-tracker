@@ -21,9 +21,14 @@ public class MainController {
     @FXML private TextArea aiAdviceArea;
     @FXML private ListView<String> transactionListView;
 
-    private FinanceManager manager = new FinanceManager();
-    private OpenAIService aiService = new OpenAIService();
+    private FinanceManager manager;
+    private OpenAIService aiService;
 
+    public void setLoggedInUser(User user)
+    {
+        this.manager=new FinanceManager(user);
+        this.aiService=new OpenAIService(user.getPersona());
+    }
     @FXML
     public void initialize() {
         // Setup categories for the dropdown
