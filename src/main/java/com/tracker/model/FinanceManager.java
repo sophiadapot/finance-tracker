@@ -13,8 +13,8 @@ public class FinanceManager {
     private String username; 
     private static String FILE_PATH = "";
     private Gson gson; 
-    public FinanceManager(String user){
-        username = user; 
+    public FinanceManager(User user){
+        username = user.getUser(); 
         FILE_PATH = "data_" + username + ".json";
         gson = new GsonBuilder().setPrettyPrinting().create(); 
         transactions = new ArrayList<>();
