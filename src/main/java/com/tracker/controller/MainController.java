@@ -42,7 +42,7 @@ public class MainController {
                 return;
             }
             
-            Transaction t = new Transaction(category, amount, LocalDate.now(), "");
+            Transaction t = new Transaction(amount, category, "");
             manager.addTransaction(t);
             
             updateUI(); //refresh

@@ -50,7 +50,7 @@ public class FinanceManager {
         Map<String, Double> monthlyTotals = new HashMap<>(); 
         for (Transaction t : transactions){
             if (t.getDate().getMonth() == LocalDate.now().getMonth() && t.getDate().getYear() == LocalDate.now().getYear()){
-                String category = t.getCatagory();
+                String category = t.getCategory();
                 double amount = t.getAmount(); 
                 monthlyTotals.put(category, monthlyTotals.getOrDefault(category, 0.0) + amount);
             } 
