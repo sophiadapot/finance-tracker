@@ -10,7 +10,8 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileWriter;
 
-public class LoginController {
+public class LoginController 
+{
     @FXML private TextField userField;
     @FXML private PasswordField passField;
     @FXML private ComboBox<String> personaBox;
@@ -19,7 +20,7 @@ public class LoginController {
     @FXML
     public void initialize() 
     {
-        personaBox.getItems().addAll("Frugal Advisor", "Risk Taker", "Strict Accountant");
+        personaBox.getItems().addAll("<50k", "50k-100k", ">100k");
     }
 
     @FXML
@@ -34,11 +35,15 @@ public class LoginController {
 
         // 2. Registration Logic: Create file if it doesn't exist
         File userFile = new File(username + "_data.csv");
-        if (!userFile.exists()) {
-            try {
+        if (!userFile.exists()) 
+            {
+            try 
+            {
                 userFile.createNewFile();
                 // Optional: Save password/persona to a config file here
-            } catch (Exception e) {
+            } 
+            catch (Exception e) 
+            {
                 System.out.println("Could not create user file.");
             }
         }
