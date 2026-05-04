@@ -34,13 +34,12 @@ public class LoginController
         User currentUser = new User(username, password, persona);
 
         // 2. Registration Logic: Create file if it doesn't exist
-        File userFile = new File(username + "_data.csv");
+        File userFile = new File("data_" + username + ".json");
         if (!userFile.exists()) 
             {
             try 
             {
                 userFile.createNewFile();
-                // Optional: Save password/persona to a config file here
             } 
             catch (Exception e) 
             {
@@ -48,7 +47,6 @@ public class LoginController
             }
         }
 
-        // 3. Switch to Main UI and pass the User object
         navigateToMain(currentUser);
     }
 
@@ -59,13 +57,13 @@ public class LoginController
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/tracker/main.fxml"));
             Parent root = loader.load();
 
-            // GET THE MAIN CONTROLLER INSTANCE
+           
             MainController mainCtrl = loader.getController();
             
-            // PASS THE USER DATA
+            
             mainCtrl.setLoggedInUser(user);
 
-            // Show the new stage
+            
             Stage stage = (Stage) loginButton.getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
